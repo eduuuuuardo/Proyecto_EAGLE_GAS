@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eagle Gas - Calidad y Servicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/components.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/pages.css' %}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar container">
+            <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'core/img/logo.png' %}" alt="Eagle Gas Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'about' %}">Quiénes Somos</a></li>
+                <li><a href="{% url 'products' %}">Productos</a></li>
+                <li><a href="{% url 'services' %}">Servicios</a></li>
+                <li><a href="{% url 'contact' %}">Contacto</a></li>
+                <li><a href="{% url 'login' %}" class="btn-login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <p>&copy; 2025 Eagle Gas. Todos los derechos reservados.</p>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="{% static 'core/js/main.js' %}"></script>
+</body>
+</html>

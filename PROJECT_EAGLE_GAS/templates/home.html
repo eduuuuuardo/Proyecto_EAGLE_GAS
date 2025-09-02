@@ -1,0 +1,79 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="hero-carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('https://picsum.photos/1920/1080?random=1')">
+                <div class="carousel-caption">
+                    <h1>BIENVENIDOS</h1>
+                    <p>Somos distribuidores al mayoreo y menudeo de combustibles.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?random=2')">
+                <div class="carousel-caption">
+                    <h1>FLOTA DE DISTRIBUCIÓN</h1>
+                    <p>Entrega eficiente y puntual a todo el país.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?random=3')">
+                <div class="carousel-caption">
+                    <h1>CONTROLA TU CONSUMO</h1>
+                    <p>Conoce los beneficios de los tanques de autoconsumo.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control prev" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+        <a class="carousel-control next" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+    </section>
+
+    <section class="content-section intro-section">
+        <div class="container">
+            <div class="intro-box">
+                <h2>Quiénes Somos</h2>
+                <p>SOMOS DISTRIBUIDORES AL MAYOREO Y MENUDEO DE COMBUSTIBLES, CALIDAD PEMEX REFINACION Y ESPECIALISTAS EN LA CONSTRUCCION Y EQUIPAMENTO DE TANQUES DE ALMACENAMIENTO EN LA MODALIDAD DE CLIENTES DE AUTOCONSUMO, OBTENIENDO EL CLIENTE GRANDES BENEFICIOS AL TENER EL CONTROL TOTAL DE LA CALIDAD Y CANTIDAD DE LOS COMBUSTIBLES SUMINISTRADOS A SUS UNIDADES PRODUCTIVAS.</p>
+            </div>
+            <div class="intro-box">
+                <h2>Nuestra Visión</h2>
+                <p>Mantener la estabilidad, firmeza y solidez a nuestro grupo de empresas en el estado de Sinaloa y a nivel nacional a través de nuevas tecnologías.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section product-service-section">
+        <div class="container">
+            <div class="section-column">
+                <h2>PRODUCTOS</h2>
+                <div class="list-container">
+                    <ul class="product-list">
+                        <li><i class="fas fa-gas-pump"></i> Diesel Marino</li>
+                        <li><i class="fas fa-car-side"></i> Diesel Automotriz</li>
+                        <li><i class="fas fa-industry"></i> Diesel Industrial Bajo Azufre/DIBA</li>
+                        <li><i class="fas fa-oil-can"></i> Lubricantes y Aditivos</li>
+                        <li><i class="fas fa-gas-pump"></i> Gasolinas Magna Sin</li>
+                        <li><i class="fas fa-gas-pump"></i> Gasolina Premium UBA</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-column">
+                <h2>SERVICIOS</h2>
+                <div class="list-container">
+                    <ul class="service-list">
+                        <li><i class="fas fa-file-invoice-dollar"></i> Financiamiento</li>
+                        <li><i class="fas fa-truck"></i> Servicio de Fletes</li>
+                        <li><i class="fas fa-cogs"></i> Instalación de tanques de autoconsumo</li>
+                        <li><i class="fas fa-broom"></i> Limpieza de tanques</li>
+                        <li><i class="fas fa-clipboard-check"></i> Control y administración de las operaciones</li>
+                        <li><i class="fas fa-filter"></i> Filtrado</li>
+                        <li><i class="fas fa-tools"></i> Programas de mantenimiento</li>
+                        <li><i class="fas fa-store"></i> Tiendas de autoservicio</li>
+                        <li><i class="fas fa-ticket-alt"></i> Cupones para consumo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
