@@ -1,0 +1,356 @@
+/*
+* Eagle Gas - Hoja de Estilos Depurada
+*
+* Se ha consolidado y optimizado el código CSS.
+* Se han eliminado reglas duplicadas y en conflicto para asegurar
+* una mayor consistencia, organización y rendimiento en el sitio web.
+*/
+
+/* --- Importación de Fuentes --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;900&display=swap');
+
+/* --- Variables de Color --- */
+:root {
+  --primary-dark: #0f1c3a; /* Azul marino profundo */
+  --secondary-blue: #2c5282; /* Azul pizarra oscuro */
+  --accent-red: #e53e3e; /* Rojo moderno */
+  --white: #ffffff;
+  --light-gray: #f7f9fc; /* Gris claro para el fondo principal */
+  --text-color: #4a5568; /* Gris oscuro para el texto del cuerpo */
+  --red-500: #ef4444; /* Rojo para acentos en animaciones */
+}
+
+/* --- Estilos Globales y Reset --- */
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  background-color: var(--light-gray);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-top: 0;
+}
+
+/* --- Clases de Utilidad --- */
+.text-primary-dark { color: var(--primary-dark); }
+.text-secondary-blue { color: var(--secondary-blue); }
+.text-accent-red { color: var(--accent-red); }
+.bg-primary-dark { background-color: var(--primary-dark); }
+.bg-secondary-blue { background-color: var(--secondary-blue); }
+.bg-accent-red { background-color: var(--accent-red); }
+
+/* --- Navbar --- */
+.navbar {
+  padding: 1rem 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.navbar-brand {
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+  color: var(--white) !important;
+}
+
+.navbar-nav .nav-link {
+  color: var(--light-gray);
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--accent-red);
+}
+
+/* --- Botones --- */
+.btn-danger-custom {
+  background-color: var(--accent-red);
+  border-color: var(--accent-red);
+  color: var(--white);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+.btn-danger-custom:hover {
+  background-color: #d23232;
+  border-color: #d23232;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.4);
+}
+
+.btn-primary-custom {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: var(--white);
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--secondary-blue);
+  border-color: var(--secondary-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-outline-primary-custom {
+  color: var(--secondary-blue);
+  border-color: var(--secondary-blue);
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-outline-primary-custom:hover {
+  background-color: var(--secondary-blue);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(44, 82, 130, 0.4);
+}
+
+/* --- Sección Principal (Carrusel) --- */
+#heroCarousel {
+  position: relative;
+  height: 700px; /* Unificado con 70vh para mayor adaptabilidad */
+}
+
+#heroCarousel .carousel-item {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+#heroCarousel .carousel-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to right, rgba(15, 28, 58, 0.7), rgba(15, 28, 58, 0.3));
+}
+
+#heroCarousel .carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: 90%;
+  background-color: rgba(15, 28, 58, 0.6);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  color: white;
+  animation: slideUp 1s ease-in-out forwards;
+}
+
+#heroCarousel .display-4 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--white);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+#heroCarousel .lead {
+  font-size: 1.25rem;
+  color: var(--light-gray);
+  margin-top: 1rem;
+}
+
+/* Unificación de los estilos para los controles del carrusel */
+.carousel-control-btn {
+  background-color: var(--accent-red);
+  border-radius: 50%;
+  padding: 1.5rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.carousel-control-btn:hover {
+  opacity: 1;
+  background-color: var(--accent-red);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none; /* Eliminar la imagen por defecto */
+}
+.carousel-control-prev,
+.carousel-control-next {
+  width: auto;
+  opacity: 1; /* Permitir la visibilidad */
+}
+
+/* --- Animaciones --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translate(-50%, -30%); opacity: 0; }
+  to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+/* --- Sección de Contenido General --- */
+.section-title {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 3.5rem;
+  color: var(--primary-dark);
+  text-align: center;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-red);
+  border-radius: 2px;
+}
+
+.icon-service {
+  font-size: 4rem;
+  color: var(--accent-red);
+  transition: transform 0.3s ease;
+}
+
+/* --- Tarjetas de Servicios --- */
+.card {
+  border: none;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.12);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 2.5rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-blue);
+}
+
+.service-card:hover .icon-service {
+  transform: scale(1.1);
+}
+
+/* --- Estilos de Formularios --- */
+input:focus, textarea:focus {
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--primary-dark);
+  color: var(--light-gray);
+  padding: 2rem 0;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--light-gray);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--accent-red);
+}
+
+.footer-heading {
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.social-icons a {
+  display: inline-block;
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent-red);
+}
+
+/* --- Mapa --- */
+#map {
+  height: 500px;
+  width: 100%;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+/* --- Estilos para transiciones de sección --- */
+.section {
+  display: none;
+  animation: fadeIn 0.8s ease-in-out;
+}
+.section.active {
+  display: block;
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+  #heroCarousel, #heroCarousel .carousel-item {
+    height: 400px;
+  }
+  
+  #heroCarousel .carousel-caption {
+    padding: 1.5rem;
+    max-width: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #heroCarousel .display-4 {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #heroCarousel .carousel-caption {
+    left: 10%;
+    transform: translateY(-50%);
+    text-align: left;
+    max-width: 600px;
+  }
+}
