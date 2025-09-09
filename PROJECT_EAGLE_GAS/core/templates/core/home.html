@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eagle Gas - Soluciones de Combustible</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,29 +30,22 @@
             }
         }
     </script>
-    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome CDN para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Leaflet CSS para el mapa -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
 
-    <!-- Botón de scroll-to-top -->
     <button id="scrollToTopBtn" class="fixed bottom-6 right-6 z-50 bg-primary-red text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-red hidden">
         <i class="fa-solid fa-chevron-up"></i>
     </button>
 
-    <!-- Barra de Navegación -->
     <nav class="bg-white text-gray-800 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo y Nombre -->
             <a href="#home" class="text-2xl font-extrabold text-dark-blue flex items-center gap-2" data-page="home">
                 <i class="fa-solid fa-gas-pump text-primary-red"></i>
                 Eagle Gas
             </a>
-            <!-- Menú de Navegación -->
             <div class="hidden md:flex items-center space-x-6">
                 <a href="#home" data-page="home" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Inicio</a>
                 <a href="#empresa" data-page="empresa" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Empresa</a>
@@ -65,15 +57,13 @@
                 <a href="#privacidad" data-page="privacidad" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Aviso de Privacidad</a>
                 <a href="#facturacion" data-page="facturacion" class="nav-link px-4 py-2 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-md">Facturación</a>
             </div>
-            <!-- Botón del menú móvil -->
             <button class="md:hidden text-gray-800 text-2xl" id="mobile-menu-button">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        <!-- Menú móvil (oculto por defecto) -->
         <div id="mobile-menu" class="md:hidden hidden bg-white py-2 px-4 shadow-lg">
             <a href="#home" data-page="home" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Inicio</a>
-            <a href="#empresa" data-page="empresa" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Empresa</a>
+            <a href="#Empresa" data-page="empresa" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Empresa</a>
             <a href="#servicios" data-page="servicios" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Servicios</a>
             <a href="#productos" data-page="productos" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Productos</a>
             <a href="#sucursales" data-page="sucursales" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Sucursales</a>
@@ -84,16 +74,11 @@
         </div>
     </nav>
 
-    <!-- Contenedor Principal de Contenido Dinámico -->
     <main id="main-content" class="w-full">
-        <!-- Sección Principal (Carrusel y secciones de la página de inicio) -->
-        <section id="home-section" class="section active">
+        <section id="home" class="section active">
             <section id="heroCarousel" class="relative overflow-hidden w-full h-[500px] md:h-[600px] lg:h-[700px]">
-                <!-- Contenedor de imágenes del carrusel -->
                 <div id="carousel-inner" class="carousel-inner flex transition-transform duration-1000 ease-in-out h-full">
-                    <!-- Los ítems se inyectan aquí con JavaScript -->
-                </div>
-                <!-- Botones de navegación del carrusel -->
+                    </div>
                 <button id="carousel-prev-btn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-colors focus:outline-none">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
@@ -101,9 +86,8 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
             </section>
-            
-            <!-- Sección "Empresa" (anteriormente Quiénes Somos) -->
-            <section id="empresa" class="container mx-auto px-4 py-20">
+
+            <section id="empresa-home" class="container mx-auto px-4 py-20">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="order-2 md:order-1">
                         <img src="https://placehold.co/800x600/34495e/ffffff?text=Tanque+de+Almacenamiento" class="w-full rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl" alt="Tanque de almacenamiento de combustible.">
@@ -123,222 +107,243 @@
                     </div>
                 </div>
             </section>
-            <!-- Sección de Nuestros Servicios -->
-            <section id="servicios" class="container mx-auto px-4 py-20 bg-light-gray rounded-2xl">
-                <div class="text-center">
-                    <h2 class="text-4xl font-extrabold inline-block">NUESTROS SERVICIOS</h2>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                        En Eagle Gas, ofrecemos una amplia gama de soluciones para tu negocio y tu vehículo.
-                    </p>
-                </div>
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-                    <!-- Servicio 1: Financiamiento -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                        <div class="flex justify-center mb-4">
-                            <i class="fa-solid fa-handshake-angle text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Financiamiento</h3>
-                        <p class="text-gray-600">
-                            Soluciones de financiamiento flexibles y competitivas para apoyar tu negocio.
-                        </p>
-                    </div>
-                    <!-- Servicio 2: Servicio de Fletes -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                        <div class="flex justify-center mb-4">
-                            <i class="fa-solid fa-truck-fast text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Servicio de Fletes</h3>
-                        <p class="text-gray-600">
-                            Logística eficiente y segura para el transporte de combustible y productos.
-                        </p>
-                    </div>
-                    <!-- Servicio 3: Instalación de Tanques -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                        <div class="flex justify-center mb-4">
-                            <i class="fa-solid fa-gas-pump text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Instalación de Tanques de Autoconsumo</h3>
-                        <p class="text-gray-600">
-                            Instalamos tanques de autoconsumo para un suministro continuo y controlado.
-                        </p>
-                    </div>
-                    <!-- Servicio 4: Limpieza de Tanques -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                        <div class="flex justify-center mb-4">
-                            <i class="fa-solid fa-broom text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Limpieza de Tanques</h3>
-                        <p class="text-gray-600">
-                            Mantenemos tus tanques limpios para asegurar la pureza del combustible.
-                        </p>
-                    </div>
-                    <!-- Servicio 5: Control y Administración -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                        <div class="flex justify-center mb-4">
-                            <i class="fa-solid fa-chart-line text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Control y Administración</h3>
-                        <p class="text-gray-600">
-                            Plataforma para el control y administración de tus operaciones de autoconsumo.
-                        </p>
-                    </div>
-                    <!-- Servicio 6: Filtrado -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                        <div class="flex justify-center mb-4">
-                            <i class="fa-solid fa-filter text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Filtrado</h3>
-                        <p class="text-gray-600">
-                            Sistemas avanzados de filtrado para garantizar la calidad del combustible.
-                        </p>
-                    </div>
-                </div>
-            </section>
         </section>
 
-        <!-- Secciones de Contenido Dinámico (ocultas por defecto) -->
-        <!-- Secciones ya existentes en tu código, con la adición de IDs -->
-    <section id="productos-section" class="section container mx-auto px-4 py-20 animate-fade-in">
-    <div class="text-center">
-        <h2 class="text-4xl font-extrabold inline-block text-dark-blue">Nuestros Productos</h2>
-        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-            En Eagle Gas, garantizamos la pureza y calidad en cada litro de combustible.
-        </p>
-    </div>
-    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        <!-- Producto: Gasolina Magna y Premium -->
-        <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
-            <div class="bg-primary-red p-4 rounded-full inline-block mb-4 shadow-lg">
-                <i class="fas fa-gas-pump text-white text-3xl"></i>
+        <section id="empresa" class="section container mx-auto px-4 py-20 hidden">
+            <div class="max-w-7xl mx-auto text-center md:text-left">
+                <h2 class="text-4xl font-poppins font-extrabold text-dark-blue inline-block">Nuestra Empresa</h2>
+                <h3 class="text-2xl font-semibold text-gray-700 mt-4">DIÉSEL Y LUBRICANTES DEL PACÍFICO S.A.</h3>
+                <p class="mt-4 text-lg max-w-4xl mx-auto md:mx-0">
+                    Somos distribuidores de combustible al mayoreo para una amplia gama de sectores productivos. Con más de 50 años en el mercado como gasolineras y 16 años como distribuidores al mayoreo, nuestra experiencia y solidez nos convierten en tu socio de confianza.
+                </p>
             </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Gasolina</h3>
-            <p class="text-gray-600 mb-4">
-                Nuestra gasolina de más alto octanaje para un rendimiento superior y un motor más limpio.
-            </p>
-            <div class="flex flex-col items-center space-y-2">
-                <span class="bg-dark-blue text-white text-sm font-semibold px-4 py-1 rounded-full">Magna</span>
-                <span class="bg-dark-blue text-white text-sm font-semibold px-4 py-1 rounded-full">Premium</span>
-            </div>
-        </div>
-        <!-- Producto: Diésel Automotriz -->
-        <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
-            <div class="bg-dark-blue p-4 rounded-full inline-block mb-4 shadow-lg">
-                <i class="fas fa-car text-white text-3xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Diésel Automotriz</h3>
-            <p class="text-gray-600">
-                Combustible de alta eficiencia diseñado para vehículos diésel y de transporte.
-            </p>
-        </div>
-        <!-- Producto: Diésel Marino -->
-        <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
-            <div class="bg-dark-blue p-4 rounded-full inline-block mb-4 shadow-lg">
-                <i class="fas fa-ship text-white text-3xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Diésel Marino</h3>
-            <p class="text-gray-600">
-                Diésel de calidad superior, optimizado para el rendimiento y la durabilidad de motores marinos.
-            </p>
-        </div>
-        <!-- Producto: Diésel Industrial -->
-        <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
-            <div class="bg-dark-blue p-4 rounded-full inline-block mb-4 shadow-lg">
-                <i class="fas fa-industry text-white text-3xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Diésel Industrial</h3>
-            <p class="text-gray-600">
-                Combustible de alto rendimiento para maquinaria pesada y equipos industriales.
-            </p>
-        </div>
-        <!-- Producto: Aceites y Aditivos -->
-        <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
-            <div class="bg-primary-red p-4 rounded-full inline-block mb-4 shadow-lg">
-                <i class="fas fa-oil-can text-white text-3xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Aceites y Aditivos</h3>
-            <p class="text-gray-600">
-                Nuestra línea de lubricantes y aditivos para maximizar el rendimiento y prolongar la vida útil de tus equipos.
-            </p>
-        </div>
-    </div>
-</section>
+            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div class="space-y-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                            <i class="fas fa-building text-accent-red mr-3"></i>Experiencia y Capacidad
+                        </h4>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Nuestra infraestructura nos permite atender los 365 días del año. Contamos con una capacidad de almacenamiento de más de un millón y medio de litros, lo que nos permite seguir operando y suministrando a nuestros clientes incluso en situaciones de escasez o contingencia.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Le ofrecemos un servicio de calidad, honradez y con la mayor disposición de cubrir sus necesidades operativas y administrativas.
+                        </p>
+                    </div>
 
-<section id="sucursales-section" class="section hidden container mx-auto px-4 py-20">
-    <div class="text-center">
-        <h2 class="text-4xl font-extrabold mb-4 inline-block text-dark-blue">Nuestras Sucursales</h2>
-        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Encuentra tu estación de servicio más cercana en el mapa.
-        </p>
-    </div>
-    <div class="mt-12 max-w-4xl mx-auto rounded-2xl shadow-xl overflow-hidden">
-        <!-- Contenedor del Mapa Leaflet -->
-        <div id="mapid" class="w-full h-[500px]"></div>
-    </div>
-</section>
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                            <i class="fas fa-credit-card text-accent-red mr-3"></i>Sistema de Control (Águila Control)
+                        </h4>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Utilizamos un sistema de autoconsumo con tecnología de punta y dispensarios de alta seguridad. A través de una **tarjeta magnética (Águila Control)** asignada a cada unidad, usted podrá obtener información detallada como:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Nombre de la empresa, número de litros consumidos.</li>
+                            <li>Kilometraje actual, horario y fecha de consumo.</li>
+                            <li>Número económico del vehículo o número de placa.</li>
+                            <li>Precio unitario e importe total.</li>
+                        </ul>
+                    </div>
+                </div>
 
-<section id="clientes-section" class="section hidden container mx-auto px-4 py-20">
-    <div class="text-center">
-        <h2 class="text-4xl font-extrabold inline-block text-dark-blue">Portal de Clientes</h2>
-        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Accede a tu cuenta para gestionar tu facturación, historial de consumo y más.
-        </p>
-    </div>
-    <div class="mt-8 p-6 bg-white rounded-xl shadow-lg max-w-2xl mx-auto">
-        <h3 class="text-2xl font-bold mb-4">Acceso a Clientes</h3>
-        <form id="loginForm">
-            <div class="mb-4">
-                <label for="username" class="block text-sm font-medium text-gray-700">Nombre de Usuario</label>
-                <input type="text" id="username" name="username" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Tu Nombre de Usuario">
+                <div class="space-y-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                            <i class="fas fa-map-marked-alt text-accent-red mr-3"></i>Ubicaciones
+                        </h4>
+                        <div class="space-y-6">
+                            <div>
+                                <h5 class="font-semibold text-gray-800">MATRIZ</h5>
+                                <p class="text-gray-600">
+                                    Av. Puerto Topolobampo 201, Parque Industrial Alfredo V. Bonfil, Mazatlán Sinaloa CP. 82050
+                                </p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-800">SUCURSAL SAN PEDRO</h5>
+                                <p class="text-gray-600">
+                                    Carretera San Pedro La Curva y Carretera Costera Lic. Benito Juárez S/N, San Pedro Navolato Sinaloa. CP. 80370
+                                </p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-800">SUCURSAL ELOTA</h5>
+                                <p class="text-gray-600">
+                                    Calle Poniente Ocho S/N, Buenos Aires, Elota Sinaloa CP. 82700
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                            <i class="fas fa-flask text-accent-red mr-3"></i>Calidad Total del Producto
+                        </h4>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Nuestra garantía de calidad se debe a nuestro sistema de filtración en tres etapas:
+                        </p>
+                        <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                            <li>Al surtir el producto de nuestra planta al autotanque que transporta el combustible.</li>
+                            <li>Al momento de la descarga en sus instalaciones.</li>
+                            <li>La filtración a la salida del diésel por el dispensario para sus unidades.</li>
+                        </ol>
+                        <p class="mt-4 text-sm text-gray-500">
+                            Nuestras instalaciones están certificadas por PEMEX Refinación como distribuidor genérico.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="mb-6">
-                <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
-                <input type="password" id="password" name="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Tu Contraseña">
+            
+             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                    <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                        <i class="fas fa-tools text-accent-red mr-3"></i>Mantenimiento Preventivo
+                    </h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        A través de nuestro departamento técnico, ofrecemos servicio de mantenimiento y limpieza periódica para el tanque de almacenamiento en sus instalaciones, de acuerdo a sus requerimientos.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                    <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                        <i class="fas fa-chart-line text-accent-red mr-3"></i>Sectores que Atendemos
+                    </h4>
+                    <ul class="grid grid-cols-2 gap-y-2 text-gray-600 list-disc list-inside">
+                        <li>Agricultura</li>
+                        <li>Ganadería</li>
+                        <li>Autotransporte Terrestre</li>
+                        <li>Transporte de Carga y Pasaje Marítimo</li>
+                        <li>Industria Pesquera y Acuícola</li>
+                        <li>Minería y Hotelería</li>
+                        <li>Salud e Industria de la Construcción</li>
+                    </ul>
+                </div>
             </div>
+        </section>
+
+        <section id="servicios" class="section container mx-auto px-4 py-20 bg-light-gray rounded-2xl hidden">
             <div class="text-center">
-                <button type="submit" class="px-8 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-md">
-                    Ingresar
-                </button>
+                <h2 class="text-4xl font-extrabold text-dark-blue inline-block">NUESTROS SERVICIOS</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    En Eagle Gas, ofrecemos una amplia gama de soluciones para tu negocio y tu vehículo.
+                </p>
             </div>
-        </form>
-    </div>
-</section>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-handshake-angle text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Financiamiento</h3>
+                    <p class="text-gray-600">
+                        Soluciones de financiamiento flexibles y competitivas para apoyar tu negocio.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-truck-fast text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Servicio de Fletes</h3>
+                    <p class="text-gray-600">
+                        Logística eficiente y segura para el transporte de combustible y productos.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-gas-pump text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Instalación de Tanques de Autoconsumo</h3>
+                    <p class="text-gray-600">
+                        Instalamos tanques de autoconsumo para un suministro continuo y controlado.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-broom text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Limpieza de Tanques</h3>
+                    <p class="text-gray-600">
+                        Mantenemos tus tanques limpios para asegurar la pureza del combustible.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-chart-line text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Control y Administración</h3>
+                    <p class="text-gray-600">
+                        Plataforma para el control y administración de tus operaciones de autoconsumo.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-filter text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Filtrado</h3>
+                    <p class="text-gray-600">
+                        Sistemas avanzados de filtrado para garantizar la calidad del combustible.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-        <section id="productos-section" class="section hidden container mx-auto px-4 py-20">
+        <section id="productos" class="section container mx-auto px-4 py-20 animate-fade-in hidden">
             <div class="text-center">
                 <h2 class="text-4xl font-extrabold inline-block text-dark-blue">Nuestros Productos</h2>
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
                     En Eagle Gas, garantizamos la pureza y calidad en cada litro de combustible.
                 </p>
             </div>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Producto 1 -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
-                    <img src="https://placehold.co/400x300/e53e3e/ffffff?text=Gasolina+Premium" alt="Gasolina Premium" class="rounded-xl mb-4">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Gasolina Premium</h3>
-                    <p class="text-gray-600">
+                    <div class="bg-primary-red p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-gas-pump text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Gasolina</h3>
+                    <p class="text-gray-600 mb-4">
                         Nuestra gasolina de más alto octanaje para un rendimiento superior y un motor más limpio.
                     </p>
+                    <div class="flex flex-col items-center space-y-2">
+                        <span class="bg-dark-blue text-white text-sm font-semibold px-4 py-1 rounded-full">Magna</span>
+                        <span class="bg-dark-blue text-white text-sm font-semibold px-4 py-1 rounded-full">Premium</span>
+                    </div>
                 </div>
-                <!-- Producto 2 -->
                 <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
-                    <img src="https://placehold.co/400x300/2c5282/ffffff?text=Diesel" alt="Diesel" class="rounded-xl mb-4">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Diesel</h3>
+                    <div class="bg-dark-blue p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-car text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Diésel Automotriz</h3>
                     <p class="text-gray-600">
-                        Combustible diésel de alta eficiencia, ideal para vehículos pesados y de transporte.
+                        Combustible de alta eficiencia diseñado para vehículos diésel y de transporte.
                     </p>
                 </div>
-                <!-- Producto 3 -->
                 <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
-                    <img src="https://placehold.co/400x300/34495e/ffffff?text=Aditivos" alt="Aditivos" class="rounded-xl mb-4">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Aditivos</h3>
+                    <div class="bg-dark-blue p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-ship text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Diésel Marino</h3>
                     <p class="text-gray-600">
-                        Aditivos para mejorar el rendimiento de tu motor y prolongar su vida útil.
+                        Diésel de calidad superior, optimizado para el rendimiento y la durabilidad de motores marinos.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
+                    <div class="bg-dark-blue p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-industry text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Diésel Industrial</h3>
+                    <p class="text-gray-600">
+                        Combustible de alto rendimiento para maquinaria pesada y equipos industriales.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
+                    <div class="bg-primary-red p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-oil-can text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Aceites y Aditivos</h3>
+                    <p class="text-gray-600">
+                        Nuestra línea de lubricantes y aditivos para maximizar el rendimiento y prolongar la vida útil de tus equipos.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="sucursales-section" class="section hidden container mx-auto px-4 py-20">
+        <section id="sucursales" class="section container mx-auto px-4 py-20 animate-fade-in hidden">
             <div class="text-center">
                 <h2 class="text-4xl font-extrabold mb-4 inline-block text-dark-blue">Nuestras Sucursales</h2>
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -346,12 +351,11 @@
                 </p>
             </div>
             <div class="mt-12 max-w-4xl mx-auto rounded-2xl shadow-xl overflow-hidden">
-                <!-- Contenedor del Mapa Leaflet -->
                 <div id="mapid" class="w-full h-[500px]"></div>
             </div>
         </section>
 
-        <section id="clientes-section" class="section hidden container mx-auto px-4 py-20">
+        <section id="clientes" class="section container mx-auto px-4 py-20 animate-fade-in hidden">
             <div class="text-center">
                 <h2 class="text-4xl font-extrabold inline-block text-dark-blue">Portal de Clientes</h2>
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -377,421 +381,369 @@
                 </form>
             </div>
         </section>
-        
-        <section id="buzon-section" class="section hidden container mx-auto px-4 py-20">
-            <div class="text-center">
-                <h2 class="text-4xl font-extrabold mb-4 inline-block text-dark-blue">Buzón de Contacto</h2>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                    ¿Tienes alguna pregunta, sugerencia o comentario? Contáctanos y te atenderemos lo más pronto posible.
-                </p>
-            </div>
-            <div class="mt-12 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <!-- Formulario de Contacto -->
-                <div class="p-6 bg-white rounded-2xl shadow-xl h-full">
-                    <form id="contactForm">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
-                                <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Tu Nombre">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
-                                <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="tu.correo@ejemplo.com">
-                            </div>
-                        </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-sm font-medium text-gray-700">Mensaje</label>
-                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Escribe tu mensaje aquí..."></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="px-8 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-md">
-                                Enviar Mensaje
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <!-- Información de Contacto Adicional -->
-                <div class="p-6 bg-white rounded-2xl shadow-xl h-full flex flex-col justify-start">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Información de Contacto</h3>
-                    <ul class="space-y-4 text-gray-700">
-                        <li class="flex items-start gap-4">
-                            <i class="fa-solid fa-map-marker-alt text-primary-red text-xl mt-1"></i>
-                            <span>Dirección: Calle Falsa 123, Col. Ficticia, Culiacán, Sinaloa, México</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <i class="fa-solid fa-phone text-primary-red text-xl mt-1"></i>
-                            <span>Teléfono: +52 667 123 4567</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <i class="fa-solid fa-envelope text-primary-red text-xl mt-1"></i>
-                            <span>Correo: contacto@eaglegas.mx</span>
-                        </li>
-                    </ul>
-                    <div class="mt-8 flex flex-col gap-4">
-                        <h4 class="text-xl font-bold text-gray-800">Horario de Atención:</h4>
-                        <p class="text-gray-700">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
-                        <p class="text-gray-700">Sábados: 9:00 AM - 2:00 PM</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Nueva sección para el Aviso de Privacidad -->
-        <section id="privacidad-section" class="section hidden container mx-auto px-4 py-20">
+        <section id="buzon" class="section container mx-auto px-4 py-20 animate-fade-in hidden">
             <div class="text-center">
-                <h2 class="text-4xl font-extrabold mb-4 inline-block text-dark-blue">Aviso de Privacidad</h2>
+                <h2 class="text-4xl font-extrabold inline-block text-dark-blue">Buzón de Sugerencias y Contacto</h2>
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                    Conoce cómo protegemos tus datos personales y los términos de uso de nuestros servicios.
+                    Envíanos tus comentarios, sugerencias o dudas. Estamos para servirte.
                 </p>
             </div>
-            <div class="mt-12 p-8 bg-white rounded-2xl shadow-xl leading-relaxed text-gray-700">
-                <h3 class="text-2xl font-bold text-primary-red mb-4">1. Identidad y Domicilio del Responsable</h3>
-                <p class="mb-6">
-                    Eagle Gas S.A. de C.V. (en adelante, "Eagle Gas") con domicilio en Calle Falsa 123, Col. Ficticia, Culiacán, Sinaloa, C.P. 80000, es el responsable del tratamiento de sus datos personales.
-                </p>
-                <h3 class="text-2xl font-bold text-primary-red mb-4">2. Finalidades del Tratamiento</h3>
-                <p class="mb-6">
-                    Sus datos personales serán utilizados para las siguientes finalidades necesarias: (a) proveer los productos y servicios que ha solicitado; (b) informarle sobre cambios en los mismos; (c) dar cumplimiento a obligaciones contraídas con usted; (d) generar la facturación electrónica correspondiente; y (e) evaluar la calidad del servicio que le brindamos.
-                </p>
-                <h3 class="text-2xl font-bold text-primary-red mb-4">3. Datos Personales Recabados</h3>
-                <p class="mb-6">
-                    Para las finalidades antes mencionadas, podemos recabar sus datos personales de diversas formas: cuando usted nos los proporciona directamente, al visitar nuestro sitio de internet, o cuando utilizamos otras fuentes permitidas por la ley. Los datos personales que recabamos pueden incluir: nombre completo, correo electrónico, dirección, teléfono y RFC.
-                </p>
-                <h3 class="text-2xl font-bold text-primary-red mb-4">4. Transferencia de Datos Personales</h3>
-                <p class="mb-6">
-                    Sus datos personales no serán transferidos a terceros sin su consentimiento expreso, con excepción de las transferencias previstas en el artículo 37 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.
-                </p>
-                <h3 class="text-2xl font-bold text-primary-red mb-4">5. Derechos ARCO</h3>
-                <p class="mb-6">
-                    Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.
-                </p>
-                <h3 class="text-2xl font-bold text-primary-red mb-4">6. Cambios al Aviso de Privacidad</h3>
-                <p class="mb-6">
-                    El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales, de nuestras propias necesidades por los productos o servicios que ofrecemos, de nuestras prácticas de privacidad, de cambios en nuestro modelo de negocio, o por otras causas. Nos comprometemos a mantenerlo informado sobre los cambios que pueda sufrir el presente aviso de privacidad, a través de nuestra página web o por correo electrónico.
-                </p>
-            </div>
-        </section>
-
-        <!-- Nueva sección para Facturación -->
-        <section id="facturacion-section" class="section hidden container mx-auto px-4 py-20">
-            <div class="text-center">
-                <h2 class="text-4xl font-extrabold mb-4 inline-block text-dark-blue">Facturación Electrónica</h2>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                    Solicita tu factura de manera rápida y sencilla. Completa el siguiente formulario con los datos de tu ticket.
-                </p>
-            </div>
-            <div class="mt-12 p-8 bg-white rounded-2xl shadow-xl max-w-xl mx-auto">
-                <form id="facturacionForm">
-                    <div class="mb-6">
-                        <label for="rfc" class="block text-sm font-medium text-gray-700">RFC (Registro Federal de Contribuyentes)</label>
-                        <input type="text" id="rfc" name="rfc" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Tu RFC" required>
+            <div class="mt-8 p-6 bg-white rounded-xl shadow-lg max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold mb-4">Formulario de Contacto</h3>
+                <form id="contactForm">
+                    <div class="mb-4">
+                        <label for="contact-name" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
+                        <input type="text" id="contact-name" name="contact-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Tu Nombre">
                     </div>
-                    <div class="mb-6">
-                        <label for="razon-social" class="block text-sm font-medium text-gray-700">Razón Social</label>
-                        <input type="text" id="razon-social" name="razon-social" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Tu Razón Social" required>
+                    <div class="mb-4">
+                        <label for="contact-email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                        <input type="email" id="contact-email" name="contact-email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="tu.correo@ejemplo.com">
                     </div>
-                    <div class="mb-6">
-                        <label for="correo-facturacion" class="block text-sm font-medium text-gray-700">Correo Electrónico para Factura</label>
-                        <input type="email" id="correo-facturacion" name="correo-facturacion" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="correo@ejemplo.com" required>
+                    <div class="mb-4">
+                        <label for="contact-subject" class="block text-sm font-medium text-gray-700">Asunto</label>
+                        <input type="text" id="contact-subject" name="contact-subject" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Asunto del Mensaje">
+                    </div>
+                    <div class="mb-4">
+                        <label for="contact-message" class="block text-sm font-medium text-gray-700">Mensaje</label>
+                        <textarea id="contact-message" name="contact-message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Escribe tu mensaje aquí..."></textarea>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="px-8 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-md">
-                            Solicitar Factura
+                            Enviar Mensaje
                         </button>
                     </div>
                 </form>
             </div>
         </section>
 
+        <section id="privacidad" class="section container mx-auto px-4 py-20 animate-fade-in hidden">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold inline-block text-dark-blue">Aviso de Privacidad</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.
+                </p>
+            </div>
+            <div class="mt-8 p-6 bg-white rounded-xl shadow-lg max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold mb-4">Políticas de Privacidad</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Su privacidad es importante para Eagle Gas. Este aviso de privacidad describe cómo recopilamos, usamos y protegemos su información personal.
+                </p>
+                <h4 class="text-xl font-bold text-gray-800 mt-6 mb-2">Datos Recopilados</h4>
+                <p class="text-gray-700 leading-relaxed">
+                    Recopilamos datos personales como nombre, correo electrónico y número de teléfono cuando se pone en contacto con nosotros a través de nuestros formularios o se registra en nuestros servicios.
+                </p>
+                <h4 class="text-xl font-bold text-gray-800 mt-6 mb-2">Uso de la Información</h4>
+                <p class="text-gray-700 leading-relaxed">
+                    La información recopilada se utiliza para responder a sus consultas, procesar solicitudes de servicio, mejorar nuestros productos y servicios, y para fines de marketing directo (con su consentimiento).
+                </p>
+            </div>
+        </section>
+
+        <section id="facturacion" class="section container mx-auto px-4 py-20 animate-fade-in hidden">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold inline-block text-dark-blue">Portal de Facturación</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Genera tu factura electrónica de manera rápida y sencilla.
+                </p>
+            </div>
+            <div class="mt-8 p-6 bg-white rounded-xl shadow-lg max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold mb-4">Solicitud de Factura</h3>
+                <form id="facturacionForm">
+                    <div class="mb-4">
+                        <label for="folio" class="block text-sm font-medium text-gray-700">Folio de Ticket</label>
+                        <input type="text" id="folio" name="folio" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Ingresa el folio de tu ticket">
+                    </div>
+                    <div class="mb-4">
+                        <label for="rfc" class="block text-sm font-medium text-gray-700">RFC</label>
+                        <input type="text" id="rfc" name="rfc" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="Tu RFC (sin espacios)">
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-red focus:ring-primary-red" placeholder="tu.correo@ejemplo.com">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="px-8 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-md">
+                            Generar Factura
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <!-- Pie de página -->
-    <footer class="bg-dark-blue text-white py-8 text-sm">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <!-- Columna 1: Información de Contacto -->
-            <div>
-                <h3 class="text-lg font-bold mb-4">Contacto</h3>
-                <ul class="space-y-2 text-gray-300">
-                    <li><i class="fa-solid fa-map-marker-alt mr-2"></i> Calle Falsa 123, Culiacán, Sinaloa</li>
-                    <li><i class="fa-solid fa-phone mr-2"></i> +52 667 123 4567</li>
-                    <li><i class="fa-solid fa-envelope mr-2"></i> contacto@eaglegas.mx</li>
-                </ul>
-            </div>
-            <!-- Columna 2: Redes Sociales -->
-            <div>
-                <h3 class="text-lg font-bold mb-4">Síguenos</h3>
-                <div class="flex justify-center md:justify-start space-x-4">
-                    <a href="#" class="text-white hover:text-primary-red transition-colors"><i class="fa-brands fa-facebook-f text-2xl"></i></a>
-                    <a href="#" class="text-white hover:text-primary-red transition-colors"><i class="fa-brands fa-twitter text-2xl"></i></a>
-                    <a href="#" class="text-white hover:text-primary-red transition-colors"><i class="fa-brands fa-instagram text-2xl"></i></a>
-                    <a href="#" class="text-white hover:text-primary-red transition-colors"><i class="fa-brands fa-linkedin-in text-2xl"></i></a>
+    <footer class="bg-dark-blue text-white py-10 mt-20">
+        <div class="container mx-auto px-4 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <a href="#home" class="flex items-center justify-center md:justify-start gap-2 mb-4">
+                        <i class="fa-solid fa-gas-pump text-primary-red text-3xl"></i>
+                        <h3 class="text-2xl font-extrabold">Eagle Gas</h3>
+                    </a>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Soluciones integrales en distribución de combustible y servicios para la industria.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#home" class="hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="#empresa" class="hover:text-white transition-colors">Empresa</a></li>
+                        <li><a href="#servicios" class="hover:text-white transition-colors">Servicios</a></li>
+                        <li><a href="#productos" class="hover:text-white transition-colors">Productos</a></li>
+                        <li><a href="#buzon" class="hover:text-white transition-colors">Buzón de Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Nuestros Servicios</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Venta de Combustible</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Fletes</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Instalación de Tanques</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Facturación Electrónica</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Contacto</h4>
+                    <p class="text-gray-300"><i class="fa-solid fa-envelope mr-2"></i> info@eaglegasmex.com</p>
+                    <p class="text-gray-300 mt-2"><i class="fa-solid fa-phone-volume mr-2"></i> (669) 982-1234</p>
+                    <div class="flex justify-center md:justify-start gap-4 mt-6 text-2xl">
+                        <a href="https://www.facebook.com/eaglegasmex" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/eaglegasmex" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
-            <!-- Columna 3: Enlaces de Interés -->
-            <div>
-                <h3 class="text-lg font-bold mb-4">Enlaces</h3>
-                <ul class="space-y-2 text-gray-300">
-                    <li><a href="#empresa" class="hover:text-primary-red transition-colors" data-page="empresa">Empresa</a></li>
-                    <li><a href="#servicios" class="hover:text-primary-red transition-colors" data-page="servicios">Servicios</a></li>
-                    <li><a href="#privacidad" class="hover:text-primary-red transition-colors" data-page="privacidad">Aviso de Privacidad</a></li>
-                </ul>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                &copy; 2024 Eagle Gas. Todos los derechos reservados.
             </div>
-        </div>
-        <div class="container mx-auto px-4 mt-8 text-center text-gray-400 border-t border-gray-700 pt-6">
-            <p>&copy; 2024 Eagle Gas. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Leaflet JS para el mapa -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-
-    <!-- Script de JavaScript para la interactividad -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const mainContent = document.getElementById('main-content');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const heroCarousel = document.getElementById('heroCarousel');
+            const carouselInner = document.getElementById('carousel-inner');
+            const carouselPrevBtn = document.getElementById('carousel-prev-btn');
+            const carouselNextBtn = document.getElementById('carousel-next-btn');
 
-            // Obtener todos los elementos de sección dinámica
-            const sections = document.querySelectorAll('.section');
+            let currentCarouselIndex = 0;
+            const carouselItems = [
+                {
+                    image: 'https://placehold.co/1920x1080/0f1c3a/ffffff?text=Eagle+Gas',
+                    title: 'Soluciones de Combustible de Vanguardia',
+                    subtitle: 'Líderes en calidad y servicio en Sinaloa y más allá.',
+                    cta: 'Descubre Más',
+                    link: '#home'
+                },
+                {
+                    image: 'https://placehold.co/1920x1080/e53e3e/ffffff?text=Nuestra+Empresa',
+                    title: 'Conoce Nuestra Empresa',
+                    subtitle: 'Más de 50 años de experiencia en el sector.',
+                    cta: 'Saber Más',
+                    link: '#empresa'
+                },
+                {
+                    image: 'https://placehold.co/1920x1080/2c5282/ffffff?text=Nuestros+Servicios',
+                    title: 'Servicios Integrales',
+                    subtitle: 'Soluciones de combustible y logística.',
+                    cta: 'Ver Servicios',
+                    link: '#servicios'
+                },
+                {
+                    image: 'https://placehold.co/1920x1080/0f1c3a/ffffff?text=Nuestros+Productos',
+                    title: 'Productos de Alta Calidad',
+                    subtitle: 'Gasolina, diésel y más para tu negocio.',
+                    cta: 'Ver Productos',
+                    link: '#productos'
+                },
+                {
+                    image: 'https://placehold.co/1920x1080/e53e3e/ffffff?text=Ubicaciones',
+                    title: 'Encuentra tu Sucursal Más Cercana',
+                    subtitle: 'Estamos donde nos necesitas.',
+                    cta: 'Ver Mapa',
+                    link: '#sucursales'
+                },
+                {
+                    image: 'https://placehold.co/1920x1080/2c5282/ffffff?text=Portal+de+Clientes',
+                    title: 'Portal de Clientes',
+                    subtitle: 'Gestión de facturación y consumo.',
+                    cta: 'Acceder Ahora',
+                    link: '#clientes'
+                },
+                {
+                    image: 'https://placehold.co/1920x1080/0f1c3a/ffffff?text=Buzon+de+Contacto',
+                    title: 'Buzón de Sugerencias',
+                    subtitle: 'Tu opinión nos ayuda a mejorar.',
+                    cta: 'Enviar Mensaje',
+                    link: '#buzon'
+                },
+                {
+                    image: 'https://placehold.co/1920x1080/e53e3e/ffffff?text=Aviso+de+Privacidad',
+                    title: 'Protegemos tu Información',
+                    subtitle: 'Consulta nuestra política de privacidad.',
+                    cta: 'Leer Aviso',
+                    link: '#privacidad'
+                },
+                {
+                    image: 'https://placehold.co/1920x1080/2c5282/ffffff?text=Portal+de+Facturacion',
+                    title: 'Portal de Facturación Electrónica',
+                    subtitle: 'Genera tus facturas de forma rápida y segura.',
+                    cta: 'Facturar Ahora',
+                    link: '#facturacion'
+                }
+            ];
 
-            // Función para mostrar una sección y ocultar las demás
-            const showSection = (id) => {
-                sections.forEach(section => {
+            const renderCarousel = () => {
+                carouselInner.innerHTML = '';
+                carouselItems.forEach(item => {
+                    const carouselItem = document.createElement('div');
+                    carouselItem.classList.add('carousel-item', 'w-full', 'flex-shrink-0', 'h-full', 'relative', 'transition-opacity', 'duration-1000', 'ease-in-out', 'opacity-0');
+                    carouselItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                        <div class="absolute top-1/2 left-10 transform -translate-y-1/2 text-white p-6 rounded-lg text-left max-w-lg animate-fade-in">
+                            <h3 class="text-5xl font-extrabold mb-4">${item.title}</h3>
+                            <p class="text-xl mb-6">${item.subtitle}</p>
+                            <a href="${item.link}" class="px-6 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-lg">${item.cta}</a>
+                        </div>
+                    `;
+                    carouselInner.appendChild(carouselItem);
+                });
+                updateCarousel(0);
+            };
+
+            const updateCarousel = (index) => {
+                const items = carouselInner.querySelectorAll('.carousel-item');
+                items.forEach((item, i) => {
+                    item.classList.remove('active', 'opacity-100');
+                    item.classList.add('opacity-0');
+                    if (i === index) {
+                        item.classList.add('active', 'opacity-100');
+                    }
+                });
+                currentCarouselIndex = index;
+            };
+
+            const nextCarouselItem = () => {
+                const newIndex = (currentCarouselIndex + 1) % carouselItems.length;
+                updateCarousel(newIndex);
+            };
+
+            const prevCarouselItem = () => {
+                const newIndex = (currentCarouselIndex - 1 + carouselItems.length) % carouselItems.length;
+                updateCarousel(newIndex);
+            };
+
+            let carouselInterval = setInterval(nextCarouselItem, 5000);
+
+            carouselNextBtn.addEventListener('click', () => {
+                clearInterval(carouselInterval);
+                nextCarouselItem();
+                carouselInterval = setInterval(nextCarouselItem, 5000);
+            });
+
+            carouselPrevBtn.addEventListener('click', () => {
+                clearInterval(carouselInterval);
+                prevCarouselItem();
+                carouselInterval = setInterval(nextCarouselItem, 5000);
+            });
+
+            renderCarousel();
+
+            // Mapa de Sucursales (Leaflet)
+            let map;
+            let markers = [];
+            const sucursales = [
+                { id: 'matriz', coords: [23.2494, -106.4026], title: 'Matriz - Mazatlán', description: 'Av. Puerto Topolobampo 201, Parque Industrial Alfredo V. Bonfil, Mazatlán Sinaloa CP. 82050' },
+                { id: 'san-pedro', coords: [24.7712, -107.4912], title: 'Sucursal San Pedro', description: 'Carretera San Pedro La Curva y Carretera Costera Lic. Benito Juárez S/N, San Pedro Navolato Sinaloa. CP. 80370' },
+                { id: 'elota', coords: [24.0894, -107.0858], title: 'Sucursal Elota', description: 'Calle Poniente Ocho S/N, Buenos Aires, Elota Sinaloa CP. 82700' }
+            ];
+
+            const initMap = () => {
+                if (map) return; // Evita inicializar el mapa varias veces
+                map = L.map('mapid').setView([24.7824, -107.4206], 8);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                sucursales.forEach(sucursal => {
+                    const marker = L.marker(sucursal.coords).addTo(map)
+                        .bindPopup(`<b>${sucursal.title}</b><br>${sucursal.description}`);
+                    markers.push(marker);
+                });
+            };
+
+            // Lógica para mostrar/ocultar secciones
+            const showSection = (pageId) => {
+                document.querySelectorAll('.section').forEach(section => {
                     section.classList.add('hidden');
                     section.classList.remove('active');
+                    section.classList.remove('animate-fade-in');
                 });
-                const targetSection = document.getElementById(`${id}-section`);
+                const targetSection = document.getElementById(pageId);
                 if (targetSection) {
                     targetSection.classList.remove('hidden');
                     targetSection.classList.add('active');
-                    // Desplazamiento suave a la sección
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                    // Si el mapa está en la sección activa, inicialízalo
-                    if (id === 'sucursales') {
-                        initializeMap();
-                    }
+                    targetSection.classList.add('animate-fade-in');
                 }
             };
-
-            // Manejador de clics para la navegación
-            const navLinks = document.querySelectorAll('.nav-link');
+            
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
                     const pageId = link.dataset.page;
                     showSection(pageId);
-                    // Ocultar el menú móvil después de hacer clic en un enlace
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                         mobileMenu.classList.add('hidden');
+                    if (pageId === 'sucursales') {
+                        setTimeout(initMap, 10);
                     }
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        mobileMenu.classList.add('hidden');
+                    }
+                    window.location.hash = pageId;
                 });
             });
 
-            // Función para inicializar y mostrar la sección correcta al cargar la página o por hash
-            const initializePage = () => {
-                const pageId = window.location.hash.substring(1) || 'home';
-                showSection(pageId);
-            };
-
-            // Iniciar la página con la sección correcta
-            initializePage();
-            window.addEventListener('hashchange', initializePage);
-
-            // ------------------
-            // Lógica del Carrusel
-            // ------------------
-            const carouselInner = document.getElementById('carousel-inner');
-            const prevBtn = document.getElementById('carousel-prev-btn');
-            const nextBtn = document.getElementById('carousel-next-btn');
-
-            const carouselItems = [
-                {
-                    title: 'Líderes en Soluciones de Combustible',
-                    subtitle: 'Innovación, Calidad y Servicio Excepcional.',
-                    img: 'https://placehold.co/1920x1080/2c5282/ffffff?text=Eagle+Gas'
-                },
-                {
-                    title: 'Control Total de tu Negocio',
-                    subtitle: 'Plataformas de administración y control de consumo.',
-                    img: 'https://placehold.co/1920x1080/e53e3e/ffffff?text=Plataforma+de+Control'
-                },
-                {
-                    title: 'Calidad que se Siente',
-                    subtitle: 'Combustible puro y eficiente para tu motor.',
-                    img: 'https://placehold.co/1920x1080/34495e/ffffff?text=Calidad+en+el+Servicio'
-                }
-            ];
-
-            let currentIndex = 0;
-            const totalItems = carouselItems.length;
-            let carouselInterval;
-
-            const renderCarousel = () => {
-                carouselInner.innerHTML = '';
-                carouselItems.forEach((item, index) => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.classList.add('carousel-item', 'absolute', 'inset-0', 'h-full', 'w-full', 'bg-cover', 'bg-center', 'transition-opacity', 'duration-1000', 'ease-in-out', 'opacity-0');
-                    if (index === currentIndex) {
-                        itemDiv.classList.add('opacity-100', 'z-10');
-                    } else {
-                        itemDiv.classList.add('z-0');
-                    }
-                    itemDiv.style.backgroundImage = `url('${item.img}')`;
-                    
-                    const overlay = document.createElement('div');
-                    overlay.classList.add('absolute', 'inset-0', 'bg-gray-900', 'bg-opacity-50', 'flex', 'flex-col', 'items-center', 'justify-center', 'text-center', 'p-4');
-                    
-                    const titleEl = document.createElement('h1');
-                    titleEl.classList.add('text-4xl', 'md:text-6xl', 'font-extrabold', 'text-white', 'animate-fade-in');
-                    titleEl.textContent = item.title;
-                    
-                    const subtitleEl = document.createElement('p');
-                    subtitleEl.classList.add('text-lg', 'md:text-2xl', 'text-gray-200', 'mt-4', 'animate-fade-in');
-                    subtitleEl.textContent = item.subtitle;
-
-                    overlay.appendChild(titleEl);
-                    overlay.appendChild(subtitleEl);
-                    itemDiv.appendChild(overlay);
-                    carouselInner.appendChild(itemDiv);
-                });
-            };
-
-            const nextSlide = () => {
-                currentIndex = (currentIndex + 1) % totalItems;
-                renderCarousel();
-            };
-
-            const prevSlide = () => {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                renderCarousel();
-            };
-
-            const startCarousel = () => {
-                carouselInterval = setInterval(nextSlide, 5000);
-            };
-
-            const stopCarousel = () => {
-                clearInterval(carouselInterval);
-            };
-
-            prevBtn.addEventListener('click', () => {
-                stopCarousel();
-                prevSlide();
-                startCarousel();
+            // Lógica para el menú móvil
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('active');
             });
 
-            nextBtn.addEventListener('click', () => {
-                stopCarousel();
-                nextSlide();
-                startCarousel();
-            });
-
-            renderCarousel();
-            startCarousel();
-
-            // --------------------------
-            // Lógica del Scroll-to-Top
-            // --------------------------
+            // Scroll-to-top button logic
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
-            const handleScroll = () => {
+            window.addEventListener('scroll', () => {
                 if (window.scrollY > 300) {
                     scrollToTopBtn.classList.remove('hidden');
                 } else {
                     scrollToTopBtn.classList.add('hidden');
                 }
-            };
-
-            const scrollToTop = () => {
+            });
+            scrollToTopBtn.addEventListener('click', () => {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
-            };
-
-            window.addEventListener('scroll', handleScroll);
-            scrollToTopBtn.addEventListener('click', scrollToTop);
-
-            // --------------------------
-            // Lógica del Menú Móvil
-            // --------------------------
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
             });
 
-            // --------------------------
-            // Lógica del Mapa Leaflet
-            // --------------------------
-            let mapInstance = null; // Variable para almacenar la instancia del mapa
+            // Inicializar la página con la sección correcta
+            const initialPage = window.location.hash.substring(1) || 'home';
+            showSection(initialPage);
+            if (initialPage === 'sucursales') {
+                initMap();
+            }
 
-            const initializeMap = () => {
-                if (mapInstance) {
-                    mapInstance.remove(); // Eliminar la instancia anterior si existe
-                }
-                const mapId = 'mapid';
-                // Centrar el mapa en una ubicación central de Culiacán y Mazatlán
-                mapInstance = L.map(mapId).setView([24.79, -107.39], 9);
-
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                    maxZoom: 18,
-                }).addTo(mapInstance);
-                
-                // Lista de sucursales con ubicaciones aproximadas
-                const sucursales = [
-                    // ESTACION DE SERVICIOS - CENTRO DE SERVICIOS SANTA FE
-                    { name: 'A-16 Matriz', company: 'CENTRO DE SERVICIOS SANTA FE', coords: [24.77, -107.47], address: 'AUTOPISTA BENITO JUAREZ KM. 9.5 CULIACÁN, SINALOA' },
-                    { name: 'A-22 Suc. Alamitos', company: 'CENTRO DE SERVICIOS SANTA FE', coords: [24.814, -107.40], address: 'AV. GENERAL ALVARO OBREGON #5783 NTE. COL. LOS ALAMITOS CULIACÁN, SINALOA' },
-                    { name: 'A-27 Suc. San Rafael', company: 'CENTRO DE SERVICIOS SANTA FE', coords: [24.792, -107.398], address: 'AVE. FRAY MARCOS DE NIZA SUR #3496 COL. SAN RAFAEL CULIACÁN, SINALOA' },
-
-                    // ESTACION DE SERVICIOS - PETROAGUILA
-                    { name: 'A-17 Matriz', company: 'PETROAGUILA', coords: [24.79, -107.41], address: 'BLVD. ENRIQUE CABRERA No.1196 PTE. COL. STASE III CULIACÁN, SINALOA' },
-                    { name: 'A-18 Sucursal', company: 'PETROAGUILA', coords: [24.815, -107.41], address: 'AV.LATERAL PONIENTE No.2472-A NTE. COL. TRES RIOS CULIACÁN, SINALOA' },
-                    { name: 'A-19 Sucursal', company: 'PETROAGUILA', coords: [23.27, -106.39], address: 'CALLE INTERNACIONAL No.9000 EJIDO EL VENADILLO MAZATLAN, SINALOA' },
-                    { name: 'A-25 Sucursal', company: 'PETROAGUILA', coords: [24.78, -107.39], address: 'AV.ALVARO OBREGON No.1802 SUR. FRACC. COLINAS DE SAN MIGUEL CULIACÁN, SINALOA' },
-                    { name: 'A-29 Sucursal', company: 'PETROAGUILA', coords: [24.785, -107.43], address: 'BLVD. LOLA BELTRAN No.3577 PONIENTE. BACURIMI CULIACÁN, SINALOA' },
-                    { name: 'A-30 Sucursal', company: 'PETROAGUILA', coords: [24.81, -107.405], address: 'AV. ALVARO OBREGON NO. 2739 NTE. COL TIERRA BLANCA CULIACAN, SINALOA' },
-                    { name: 'A-31 Sucursal', company: 'PETROAGUILA', coords: [24.79, -107.40], address: 'AV. GRAL NICOLAS BRAVO NO. 885 SUR, COL GUADALUPE CULIACAN, SINALOA' },
-
-                    // ENERGETICOS AGUILA
-                    { name: 'Sucursal San Blas', company: 'ENERGETICOS AGUILA', coords: [21.54, -105.28], address: 'PARQUE INDUSTRIAL PORT. S/N MUELLE PESQUERO SAN BLAS, NAYARIT' },
-
-                    // DISTRIBUIDORAS - DIESEL Y LUBRICANTES DEL PACIFICO
-                    { name: 'Matriz', company: 'DIESEL Y LUBRICANTES DEL PACIFICO', coords: [23.24, -106.40], address: 'AV. PTO DE TOPOLOBAMPO No.201 PARQUE IND. ALFREDO V. BONFIL MAZATLAN, SINALOA' },
-                    { name: 'Sucursal San Pedro', company: 'DIESEL Y LUBRICANTES DEL PACIFICO', coords: [24.60, -107.72], address: 'CARRETERA SAN PEDRO LA CURVA Y CARRETERA COSTERA, LIC. BENITO JUAREZ S/N SAN PEDRO, NAVOLATO, SINALOA' },
-                    { name: 'Sucursal Cananea', company: 'DIESEL Y LUBRICANTES DEL PACIFICO', coords: [30.98, -110.3], address: 'CARRETERA FEDERAL NUM.2 KM 78 CANANEA, SONORA' },
-                    { name: 'Sucursal Hermosillo', company: 'DIESEL Y LUBRICANTES DEL PACIFICO', coords: [29.07, -110.96], address: 'CALLE CAMINO ACEITES Y DERIVADOS NO. 134, COL. LA VICTORIA HERMOSILLO, SONORA' },
-
-                    // DISTRIBUIDORAS - ARREIN AGUILA
-                    { name: 'Matriz', company: 'ARREIN AGUILA', coords: [23.27, -106.39], address: 'AV. LIBRAMIENTO TRES NO.10101 EJ. EL VENADILLO MAZATLAN, SINALOA' },
-
-                    // TRANSPORTISTA - AGUILA TRANSPORTACIONES
-                    { name: 'Matriz', company: 'AGUILA TRANSPORTACIONES', coords: [24.79, -107.40], address: 'NICOLAS BRAVO 899-B SUR COLONIA GUADALUPE, CULIACAN SINALOA' },
-                    { name: 'Sucursal', company: 'AGUILA TRANSPORTACIONES', coords: [23.24, -106.40], address: 'AV. PUERTO DE TOPOLOBAMPO 201 INTERIOR A COL PARQUE IND ALFREDO V. BONFIL MAZATLAN SINALOA' }
-                ];
-
-                sucursales.forEach(sucursal => {
-                    const marker = L.marker(sucursal.coords).addTo(mapInstance);
-                    // Usar un popup para mostrar el nombre y la dirección
-                    marker.bindPopup(`<b>${sucursal.name}</b><br><i>${sucursal.company}</i><br>${sucursal.address}`).openPopup();
-                });
-            };
-            
-            // --------------------------
-            // Lógica de Formularios
-            // --------------------------
+            // Form message functions
             const loginForm = document.getElementById('loginForm');
             const contactForm = document.getElementById('contactForm');
             const facturacionForm = document.getElementById('facturacionForm');
 
-            // Función para mostrar un mensaje de éxito
             const showMessage = (form, message) => {
-                // Previene múltiples mensajes si se hace clic repetidamente
-                if (form.querySelector('.message-box')) {
-                    return;
-                }
                 const messageBox = document.createElement('div');
                 messageBox.textContent = message;
                 messageBox.classList.add('message-box', 'mt-4', 'p-4', 'rounded-md', 'bg-green-100', 'text-green-800', 'text-center');

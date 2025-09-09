@@ -353,4 +353,34 @@ input:focus, textarea:focus {
     text-align: left;
     max-width: 600px;
   }
+  /* --- Nuevo --- */
+     .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .nav-link {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-red);
+            transform: translateY(-2px);
+        }
+
+        .card-service {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-box {
+            animation: fadeIn 0.5s ease-in-out;
+        }
 }
