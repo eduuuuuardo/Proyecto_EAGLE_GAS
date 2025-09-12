@@ -11,4 +11,8 @@ urlpatterns = [
     path('iniciar-sesion/', views.login, name='login'),
     # Ruta para la página de creación de facturas
     path('crear-factura/', views.create_invoice, name='create_invoice'),
+    
+    # Nuevas rutas agregadas
+    path('panel-usuario/', views.panel_usuario, name='panel_usuario'),
+    path('registrate-aqui/', views.registro, name='registro'),
 ]

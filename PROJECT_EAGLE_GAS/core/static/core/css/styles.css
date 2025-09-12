@@ -136,7 +136,8 @@ h1, h2, h3, h4, h5, h6 {
 #heroCarousel .carousel-item::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0; left: 0; right: 0;
+  bottom: 0;
   background: linear-gradient(to right, rgba(15, 28, 58, 0.7), rgba(15, 28, 58, 0.3));
 }
 
@@ -186,6 +187,7 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-control-next-icon {
   background-image: none; /* Eliminar la imagen por defecto */
 }
+
 .carousel-control-prev,
 .carousel-control-next {
   width: auto;
@@ -353,34 +355,33 @@ input:focus, textarea:focus {
     text-align: left;
     max-width: 600px;
   }
-  /* --- Nuevo --- */
-     .section {
-            display: none;
-        }
+  .section {
+    display: none;
+  }
 
-        .section.active {
-            display: block;
-        }
+  .section.active {
+    display: block;
+  }
 
-        .nav-link {
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+  .nav-link {
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
 
-        .nav-link:hover {
-            color: var(--accent-red);
-            transform: translateY(-2px);
-        }
+  .nav-link:hover {
+    color: var(--accent-red);
+    transform: translateY(-2px);
+  }
 
-        .card-service {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+  .card-service {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-        .card-service:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
+  .card-service:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
 
-        .message-box {
-            animation: fadeIn 0.5s ease-in-out;
-        }
+  .message-box {
+    animation: fadeIn 0.5s ease-in-out;
+  }
 }

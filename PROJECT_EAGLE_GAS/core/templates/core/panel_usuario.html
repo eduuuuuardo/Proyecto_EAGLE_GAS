@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eagle Gas - Soluciones de Combustible</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-red': '#e53e3e',
+                        'dark-blue': '#2c5282',
+                        'light-gray': '#f7fafc',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #mapid { height: 600px; }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <button id="scrollToTopBtn" class="fixed bottom-6 right-6 z-50 bg-primary-red text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-red hidden">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <nav class="bg-white text-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-extrabold text-dark-blue flex items-center gap-2" data-page="home">
+                <i class="fa-solid fa-gas-pump text-primary-red"></i>
+                Eagle Gas
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" data-page="home" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Inicio</a>
+                <a href="#empresa" data-page="empresa" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Empresa</a>
+                <a href="#servicios" data-page="servicios" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Servicios</a>
+                <a href="#productos" data-page="productos" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Productos</a>
+                <a href="#sucursales" data-page="sucursales" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Sucursales</a>
+                <a href="#clientes" data-page="clientes" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Clientes</a>
+                <a href="#buzon" data-page="buzon" class="nav-link text-gray-600 hover:text-primary-red transition-colors font-semibold">Buzón</a>              
+                <a href="http://corp-aguila.sytes.net:8080/factweb/index.php" class="nav-link px-4 py-2 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-md">Facturación</a>
+            </div>
+            <button class="md:hidden text-gray-800 text-2xl" id="mobile-menu-button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#home" data-page="home" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Inicio</a>
+            <a href="#Empresa" data-page="empresa" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Empresa</a>
+            <a href="#servicios" data-page="servicios" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Servicios</a>
+            <a href="#productos" data-page="productos" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Productos</a>
+            <a href="#sucursales" data-page="sucursales" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Sucursales</a>
+            <a href="#clientes" data-page="clientes" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Clientes</a>
+            <a href="#buzon" data-page="buzon" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Buzón</a>
+            <a href="#privacidad" data-page="privacidad" class="nav-link block py-2 text-gray-600 hover:text-primary-red transition-colors">Aviso de Privacidad</a>
+            <a href="http://corp-aguila.sytes.net:8080/factweb/index.php" class="nav-link block py-2 text-white bg-primary-red text-center font-bold rounded-full mt-2 hover:bg-red-700 transition-colors">Facturación</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="w-full">
+        <section id="home" class="section active">
+            <section id="heroCarousel" class="relative overflow-hidden w-full h-[500px] md:h-[600px] lg:h-[700px]">
+                <div id="carousel-inner" class="carousel-inner flex transition-transform duration-1000 ease-in-out h-full">
+                    <div class="carousel-item flex-none w-full h-full relative" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('image_c2015b.png'); background-size: cover; background-position: center;">
+                        <div class="carousel-caption absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white p-6 rounded-lg bg-gray-900 bg-opacity-40 max-w-2xl">
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-3">Soluciones de Combustible de Vanguardia</h2>
+                            <p class="text-lg md:text-xl mb-6">Líderes en calidad y servicio en Sinaloa y más allá.</p>
+                            <a href="#home" class="px-6 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-lg">Descubre Más</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item flex-none w-full h-full relative" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/4c759f/ffffff?text=Nuestra+Empresa'); background-size: cover; background-position: center;">
+                        <div class="carousel-caption absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white p-6 rounded-lg bg-gray-900 bg-opacity-40 max-w-2xl">
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-3">Conoce Nuestra Empresa</h2>
+                            <p class="text-lg md:text-xl mb-6">Más de 50 años de experiencia en el sector.</p>
+                            <a href="#empresa" class="px-6 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-lg">Descubre Más</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item flex-none w-full h-full relative" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/6e88a3/ffffff?text=Nuestros+Servicios'); background-size: cover; background-position: center;">
+                        <div class="carousel-caption absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white p-6 rounded-lg bg-gray-900 bg-opacity-40 max-w-2xl">
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-3">Servicios a tu Medida</h2>
+                            <p class="text-lg md:text-xl mb-6">Innovación y control para la eficiencia de tu negocio.</p>
+                            <a href="#servicios" class="px-6 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-lg">Conoce los Servicios</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item flex-none w-full h-full relative" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/8e9aa5/ffffff?text=Nuestros+Productos'); background-size: cover; background-position: center;">
+                        <div class="carousel-caption absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white p-6 rounded-lg bg-gray-900 bg-opacity-40 max-w-2xl">
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-3">Nuestros Productos</h2>
+                            <p class="text-lg md:text-xl mb-6">Garantizamos la pureza y calidad en cada litro de combustible.</p>
+                            <a href="#productos" class="px-6 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-lg">Ver Productos</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item flex-none w-full h-full relative" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/a9b8c7/ffffff?text=Nuestras+Sucursales'); background-size: cover; background-position: center;">
+                        <div class="carousel-caption absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white p-6 rounded-lg bg-gray-900 bg-opacity-40 max-w-2xl">
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-3">Nuestras Sucursales</h2>
+                            <p class="text-lg md:text-xl mb-6">Encuentra la estación de servicio Eagle Gas más cercana.</p>
+                            <a href="#sucursales" class="px-6 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-lg">Ver Sucursales</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item flex-none w-full h-full relative" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/c4d2dd/ffffff?text=Registro+de+Clientes'); background-size: cover; background-position: center;">
+                        <div class="carousel-caption absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white p-6 rounded-lg bg-gray-900 bg-opacity-40 max-w-2xl">
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-3">Registro de Clientes</h2>
+                            <p class="text-lg md:text-xl mb-6">Crea una cuenta para acceder a beneficios exclusivos.</p>
+                            <a href="#clientes" class="px-6 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-lg">Regístrate Ahora</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item flex-none w-full h-full relative" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/e1e8ed/ffffff?text=Buzon+de+Sugerencias'); background-size: cover; background-position: center;">
+                        <div class="carousel-caption absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white p-6 rounded-lg bg-gray-900 bg-opacity-40 max-w-2xl">
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-3">Buzón de Contacto</h2>
+                            <p class="text-lg md:text-xl mb-6">Envíanos tus dudas o sugerencias.</p>
+                            <a href="#buzon" class="px-6 py-3 bg-primary-red text-white font-bold rounded-full hover:bg-red-700 transition-colors shadow-lg">Contáctanos</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="carousel-prev-btn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-colors focus:outline-none">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button id="carousel-next-btn" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-colors focus:outline-none">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </section>
+
+            <section id="empresa-home" class="container mx-auto px-4 py-20">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <img src="https://placehold.co/800x600/34495e/ffffff?text=Tanque+de+Almacenamiento" class="w-full rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl" alt="Tanque de almacenamiento de combustible.">
+                    </div>
+                    <div class="order-1 md:order-2 p-6 md:p-12 rounded-2xl bg-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-dark-blue">EMPRESA</h2>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Nuestra Historia y Visión</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Eagle Gas es una empresa con una sólida trayectoria en el mercado de combustibles. Nuestro compromiso es ofrecer productos y servicios de la más alta calidad, con la firmeza y solidez que nos ha caracterizado a lo largo de los años. Buscamos constantemente la innovación para mejorar la eficiencia y el control de los combustibles en las operaciones de nuestros clientes.
+                        </p>
+                        <div class="mt-8">
+                            <h4 class="text-2xl font-bold mb-2 text-gray-800 flex items-center"><i class="fa-solid fa-eye mr-3 text-primary-red"></i> VISIÓN</h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                Mantener la estabilidad, firmeza y solidez de nuestro grupo de empresas en el estado de Sinaloa y a nivel nacional a través de nuevas tecnologías y un servicio excepcional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="empresa" class="section container mx-auto px-4 py-20 hidden">
+            <div class="max-w-7xl mx-auto text-center md:text-left">
+                <h2 class="text-4xl font-poppins font-extrabold text-dark-blue inline-block">Nuestra Empresa</h2>
+                <h3 class="text-2xl font-semibold text-gray-700 mt-4">DIÉSEL Y LUBRICANTES DEL PACÍFICO S.A.</h3>
+                <p class="mt-4 text-lg max-w-4xl mx-auto md:mx-0">
+                    Somos distribuidores de combustible al mayoreo para una amplia gama de sectores productivos. Con más de 50 años en el mercado como gasolineras y 16 años como distribuidores al mayoreo, nuestra experiencia y solidez nos convierten en tu socio de confianza.
+                </p>
+            </div>
+            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div class="space-y-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                            <i class="fas fa-building text-accent-red mr-3"></i>Experiencia y Capacidad
+                        </h4>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Nuestra infraestructura nos permite atender los 365 días del año. Contamos con una capacidad de almacenamiento de más de un millón y medio de litros, lo que nos permite seguir operando y suministrando a nuestros clientes incluso en situaciones de escasez o contingencia.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Le ofrecemos un servicio de calidad, honradez y con la mayor disposición de cubrir sus necesidades operativas y administrativas.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                            <i class="fas fa-credit-card text-accent-red mr-3"></i>Sistema de Control (Águila Control)
+                        </h4>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Utilizamos un sistema de autoconsumo con tecnología de punta y dispensarios de alta seguridad. A través de una **tarjeta magnética (Águila Control)** asignada a cada unidad, usted podrá obtener información detallada como:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Nombre de la empresa, número de litros consumidos.</li>
+                            <li>Kilometraje actual, horario y fecha de consumo.</li>
+                            <li>Número económico del vehículo o número de placa.</li>
+                            <li>Precio unitario e importe total.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="space-y-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                            <i class="fas fa-map-marked-alt text-accent-red mr-3"></i>Ubicaciones
+                        </h4>
+                        <div class="space-y-6">
+                            <div>
+                                <h5 class="font-semibold text-gray-800">MATRIZ</h5>
+                                <p class="text-gray-600">
+                                    Av. Puerto Topolobampo 201, Parque Industrial Alfredo V. Bonfil, Mazatlán Sinaloa CP. 82050
+                                </p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-800">SUCURSAL SAN PEDRO</h5>
+                                <p class="text-gray-600">
+                                    Carretera San Pedro La Curva y Carretera Costera Lic. Benito Juárez S/N, San Pedro Navolato Sinaloa. CP. 80370
+                                </p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-800">SUCURSAL ELOTA</h5>
+                                <p class="text-gray-600">
+                                    Calle Poniente Ocho S/N, Buenos Aires, Elota Sinaloa CP. 82700
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                        <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                            <i class="fas fa-flask text-accent-red mr-3"></i>Calidad Total del Producto
+                        </h4>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Nuestra garantía de calidad se debe a nuestro sistema de filtración en tres etapas:
+                        </p>
+                        <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                            <li>Al surtir el producto de nuestra planta al autotanque que transporta el combustible.</li>
+                            <li>Al momento de la descarga en sus instalaciones.</li>
+                            <li>La filtración a la salida del diésel por el dispensario para sus unidades.</li>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                    <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                        <i class="fas fa-tools text-accent-red mr-3"></i>Mantenimiento Preventivo
+                    </h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        A través de nuestro departamento técnico, ofrecemos servicio de mantenimiento y limpieza periódica para el tanque de almacenamiento en sus instalaciones, de acuerdo a sus requerimientos.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                    <h4 class="text-2xl font-bold text-dark-blue mb-4 flex items-center">
+                        <i class="fas fa-chart-line text-accent-red mr-3"></i>Sectores que Atendemos
+                    </h4>
+                    <ul class="grid grid-cols-2 gap-y-2 text-gray-600 list-disc list-inside">
+                        <li>Agricultura</li>
+                        <li>Ganadería</li>
+                        <li>Autotransporte Terrestre</li>
+                        <li>Transporte de Carga y Pasaje Marítimo</li>
+                        <li>Industria Pesquera y Acuícola</li>
+                        <li>Minería y Hotelería</li>
+                        <li>Salud e Industria de la Construcción</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="section container mx-auto px-4 py-20 bg-light-gray rounded-2xl hidden">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold text-dark-blue inline-block">NUESTROS SERVICIOS</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    En Eagle Gas, ofrecemos una amplia gama de soluciones para tu negocio y tu vehículo.
+                </p>
+            </div>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-handshake-angle text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Financiamiento</h3>
+                    <p class="text-gray-600">
+                        Soluciones de financiamiento flexibles y competitivas para apoyar tu negocio.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-truck-fast text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Servicio de Fletes</h3>
+                    <p class="text-gray-600">
+                        Logística eficiente y segura para el transporte de combustible y productos.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-gas-pump text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Instalación de Tanques de Autoconsumo</h3>
+                    <p class="text-gray-600">
+                        Instalamos tanques de autoconsumo para un suministro continuo y controlado.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-broom text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Limpieza de Tanques</h3>
+                    <p class="text-gray-600">
+                        Mantenemos tus tanques limpios para asegurar la pureza del combustible.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-chart-line text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Control y Administración</h3>
+                    <p class="text-gray-600">
+                        Plataforma para el control y administración de tus operaciones de autoconsumo.
+                    </p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-filter text-primary-red text-5xl transition-transform duration-300 hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Filtrado</h3>
+                    <p class="text-gray-600">
+                        Sistemas avanzados de filtrado para garantizar la calidad del combustible.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="productos" class="section container mx-auto px-4 py-20 animate-fade-in hidden">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold inline-block text-dark-blue">Nuestros Productos</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    En Eagle Gas, garantizamos la pureza y calidad en cada litro de combustible.
+                </p>
+            </div>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
+                    <div class="bg-primary-red p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-gas-pump text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Gasolina Magna y Premium</h3>
+                    <p class="text-gray-600 mb-4">Ofrecemos los más altos estándares de calidad en gasolina para todo tipo de vehículos.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
+                    <div class="bg-primary-red p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-truck-fast text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Diésel Automotriz</h3>
+                    <p class="text-gray-600 mb-4">Diésel de alta calidad diseñado para optimizar el rendimiento de vehículos automotrices.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
+                    <div class="bg-primary-red p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-ship text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Diésel Marino</h3>
+                    <p class="text-gray-600 mb-4">Combustible especializado que cumple con las exigentes normativas para embarcaciones marítimas.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
+                    <div class="bg-primary-red p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-industry text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Diésel Industrial</h3>
+                    <p class="text-gray-600 mb-4">Solución ideal para la maquinaria pesada y equipos industriales que requieren un alto rendimiento.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center">
+                    <div class="bg-primary-red p-4 rounded-full inline-block mb-4 shadow-lg">
+                        <i class="fas fa-oil-can text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Lubricantes y Aditivos</h3>
+                    <p class="text-gray-600 mb-4">Productos que mejoran la eficiencia, protegen los motores y alargarán la vida útil de tus equipos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sucursales" class="section container mx-auto px-4 py-20 animate-fade-in hidden">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold text-dark-blue inline-block">Nuestras Sucursales</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Encuentra la estación de servicio, distribuidora o transportista más cercana.</p>
+            </div>
+            <div id="mapid" class="w-full mt-12 rounded-2xl shadow-xl"></div>
+            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                    <div class="flex items-center mb-4">
+                        <i class="fa-solid fa-list-ul text-primary-red text-3xl mr-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-800">Detalles de Sucursales</h3>
+                    </div>
+                    <ul id="sucursales-list" class="space-y-4 text-gray-700">
+                        </ul>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                    <div class="flex items-center mb-4">
+                        <i class="fa-solid fa-map-marker-alt text-primary-red text-3xl mr-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-800">Conoce la ubicación de nuestras estaciones de servicio y oficinas.</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nuestra red de sucursales está estratégicamente ubicada para ofrecerte un servicio conveniente y eficiente.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="clientes" class="section container mx-auto px-4 py-20 bg-light-gray hidden">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold text-dark-blue inline-block">REGISTRO DE CLIENTES</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    Únete a nuestra red de clientes y accede a beneficios exclusivos, promociones y un servicio de calidad.
+                </p>
+            </div>
+            <div class="mt-12 max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-xl">
+                <form id="registro-form" class="space-y-6">
+                    <div>
+                        <label for="nombre" class="block text-gray-700 font-semibold mb-2">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-colors" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-colors" required>
+                    </div>
+                    <div>
+                        <label for="telefono" class="block text-gray-700 font-semibold mb-2">Número de Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-colors" required>
+                    </div>
+                    <div>
+                        <label for="empresa" class="block text-gray-700 font-semibold mb-2">Nombre de la Empresa</label>
+                        <input type="text" id="empresa" name="empresa" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-colors">
+                    </div>
+                    <div>
+                        <label for="mensaje" class="block text-gray-700 font-semibold mb-2">Mensaje (opcional)</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-colors"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary-red text-white font-bold py-3 rounded-md hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-red">
+                        Enviar Solicitud de Registro
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="buzon" class="section container mx-auto px-4 py-20 hidden">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold text-dark-blue inline-block">Buzón de Sugerencias</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    Tu opinión es importante para nosotros. Utiliza este buzón para enviarnos tus comentarios, sugerencias o inquietudes.
+                </p>
+            </div>
+            <div class="mt-12 max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-xl">
+                <form id="buzon-form" class="space-y-6">
+                    <div>
+                        <label for="nombre-buzon" class="block text-gray-700 font-semibold mb-2">Nombre (opcional)</label>
+                        <input type="text" id="nombre-buzon" name="nombre-buzon" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-colors">
+                    </div>
+                    <div>
+                        <label for="email-buzon" class="block text-gray-700 font-semibold mb-2">Correo Electrónico (opcional)</label>
+                        <input type="email" id="email-buzon" name="email-buzon" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-colors">
+                    </div>
+                    <div>
+                        <label for="mensaje-buzon" class="block text-gray-700 font-semibold mb-2">Mensaje</label>
+                        <textarea id="mensaje-buzon" name="mensaje-buzon" rows="6" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-colors" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary-red text-white font-bold py-3 rounded-md hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-red">
+                        Enviar Sugerencia
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="text-2xl font-extrabold mb-4 text-primary-red">Eagle Gas</h4>
+                <p class="text-gray-400 leading-relaxed text-sm">
+                    Líderes en distribución de combustible de alta calidad en Sinaloa y Sonora. Comprometidos con la eficiencia, innovación y un servicio excepcional para nuestros clientes.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-4">Secciones</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#home" class="hover:text-primary-red transition-colors">Inicio</a></li>
+                    <li><a href="#empresa" class="hover:text-primary-red transition-colors">Empresa</a></li>
+                    <li><a href="#servicios" class="hover:text-primary-red transition-colors">Servicios</a></li>
+                    <li><a href="#productos" class="hover:text-primary-red transition-colors">Productos</a></li>
+                    <li><a href="#sucursales" class="hover:text-primary-red transition-colors">Sucursales</a></li>
+                    <li><a href="#clientes" class="hover:text-primary-red transition-colors">Clientes</a></li>
+                    <li><a href="#buzon" class="hover:text-primary-red transition-colors">Buzón</a></li>
+                    <li><a href="#privacidad" class="hover:text-primary-red transition-colors">Aviso de Privacidad</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-4">Contacto</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><i class="fa-solid fa-phone mr-2 text-primary-red"></i> (669) 981-8016</li>
+                    <li><i class="fa-solid fa-envelope mr-2 text-primary-red"></i> contacto@eaglegas.com.mx</li>
+                    <li><i class="fa-solid fa-map-marker-alt mr-2 text-primary-red"></i> Mazatlán, Sinaloa, México</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-4">Síguenos</h4>
+                <div class="flex space-x-4 text-2xl">
+                    <a href="#" class="hover:text-primary-red transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-primary-red transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-primary-red transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-primary-red transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8">
+            &copy; <span id="current-year"></span> Eagle Gas. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Declaración de variables globales para el mapa
+        let mymap = null;
+        let mapInitialized = false;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mainContent = document.getElementById('main-content');
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.dataset.page === 'facturacion') return;
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    showSection(targetId);
+                    updateActiveClass(targetId);
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            function showSection(id) {
+                sections.forEach(section => {
+                    const isActive = section.id === id;
+                    section.classList.toggle('hidden', !isActive);
+                    section.classList.toggle('active', isActive);
+                });
+                
+                if (id === 'sucursales' && !mapInitialized) {
+                    initMap();
+                } else if (id === 'sucursales' && mymap) {
+                    // Refresca el mapa después de un breve retraso para asegurar que se muestre correctamente
+                    setTimeout(() => {
+                        mymap.invalidateSize();
+                    }, 100);
+                }
+            }
+
+            function updateActiveClass(id) {
+                navLinks.forEach(link => {
+                    link.classList.remove('text-primary-red', 'font-extrabold', 'text-gray-600', 'font-semibold', 'font-bold');
+                    link.classList.add('text-gray-600', 'hover:text-primary-red', 'transition-colors', 'font-semibold');
+                    if (link.dataset.page === id) {
+                        link.classList.remove('text-gray-600');
+                        link.classList.add('text-primary-red', 'font-extrabold');
+                    }
+                    if (link.parentElement.id === 'mobile-menu') {
+                        link.classList.remove('font-extrabold');
+                        if (link.dataset.page === id) {
+                             link.classList.add('font-bold');
+                        }
+                    }
+                });
+            }
+
+            // Scroll to top button functionality
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    scrollToTopBtn.classList.remove('hidden');
+                } else {
+                    scrollToTopBtn.classList.add('hidden');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Carousel functionality
+            const carouselInner = document.getElementById('carousel-inner');
+            const prevButton = document.getElementById('carousel-prev-btn');
+            const nextButton = document.getElementById('carousel-next-btn');
+            const totalItems = document.querySelectorAll('.carousel-item').length;
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const offset = -currentIndex * 100;
+                carouselInner.style.transform = `translateX(${offset}%)`;
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            }
+
+            if (prevButton && nextButton) {
+                prevButton.addEventListener('click', prevSlide);
+                nextButton.addEventListener('click', nextSlide);
+            }
+
+            let carouselInterval = setInterval(nextSlide, 5000); // Cambia de slide cada 5 segundos
+
+            // Pausar el carrusel al pasar el mouse por encima
+            const carousel = document.getElementById('heroCarousel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', () => {
+                    clearInterval(carouselInterval);
+                });
+                carousel.addEventListener('mouseleave', () => {
+                    carouselInterval = setInterval(nextSlide, 5000);
+                });
+            }
+
+            // Lógica de navegación por URL con hash
+            function handleHashChange() {
+                const hash = window.location.hash.substring(1);
+                const targetId = hash || 'home';
+                showSection(targetId);
+                updateActiveClass(targetId);
+            }
+
+            window.addEventListener('hashchange', handleHashChange);
+            handleHashChange(); // Llama a la función al cargar la página por primera vez
+        });
+    </script>
+    <script>
+        // Lógica específica para la sección de sucursales
+        function initMap() {
+            if (mapInitialized) {
+                return; // Evita inicializar el mapa múltiples veces
+            }
+
+            const locations = [
+                { nombre: "Matriz", lat: 23.238000, lng: -106.390000, rfc: "DLP-800222-QK2", direccion: "Av. Puerto Topolobampo 201, Parque Industrial Alfredo V. Bonfil, Mazatlán Sinaloa CP. 82050" },
+                { nombre: "Sucursal San Pedro", lat: 24.793000, lng: -107.402000, rfc: "DLP-800222-QK2", direccion: "Carretera San Pedro La Curva y Carretera Costera Lic. Benito Juárez S/N, San Pedro Navolato Sinaloa. CP. 80370" },
+                { nombre: "Sucursal Elota", lat: 24.083000, lng: -107.033000, rfc: "DLP-800222-QK2", direccion: "Calle Poniente Ocho S/N, Buenos Aires, Elota Sinaloa CP. 82700" },
+                { nombre: "Sucursal Cananea", lat: 30.985000, lng: -110.297000, rfc: "DLP-800222-QK2", direccion: "Carretera Federal No.2 KM 78, Cananea, Sonora" },
+                { nombre: "Sucursal Hermosillo", lat: 29.117000, lng: -110.966000, rfc: "DLP-800222-QK2", direccion: "Calle Camino Aceites y Derivados No. 134, Col. La Victoria, Hermosillo, Sonora" },
+                { nombre: "Matriz Arrein Aguila", lat: 23.238000, lng: -106.390000, rfc: null, direccion: "Av. Libramiento Tres No.10101, Ej. El Venadillo, Mazatlán, Sinaloa" },
+                { nombre: "Matriz Aguila Transportaciones", lat: 24.793000, lng: -107.402000, rfc: "ATR 990308 1X0", direccion: "Nicolás Bravo 899-B Sur, Col. Guadalupe, Culiacán, Sinaloa" },
+                { nombre: "Sucursal Aguila Transportaciones", lat: 23.243000, lng: -106.400000, rfc: "ATR 990308 1X0", direccion: "Av. Puerto de Topolobampo 201 Int A, Col. Parque Ind. Alfredo V. Bonfil, Mazatlán, Sinaloa" }
+            ];
+
+            // mymap ahora es una variable global, declarada fuera de la función
+            mymap = L.map('mapid').setView([24.793000, -107.402000], 6);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(mymap);
+
+            const sucursalesList = document.getElementById('sucursales-list');
+
+            locations.forEach(sucursal => {
+                const marker = L.marker([sucursal.lat, sucursal.lng]).addTo(mymap);
+                let popupContent = `<b>${sucursal.nombre}</b><br>${sucursal.direccion}`;
+                if (sucursal.rfc) {
+                    popupContent += `<br>RFC: ${sucursal.rfc}`;
+                }
+                marker.bindPopup(popupContent);
+
+                const listItem = document.createElement('li');
+                listItem.className = "p-4 border-b border-gray-200 last:border-b-0 transition-colors duration-300 hover:bg-gray-50 cursor-pointer";
+                listItem.innerHTML = `
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-map-marker-alt text-primary-red mr-4 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-lg">${sucursal.nombre}</h4>
+                            <p class="text-gray-600 text-sm">${sucursal.direccion}</p>
+                            ${sucursal.rfc ? `<p class="text-gray-500 text-xs mt-1">RFC: ${sucursal.rfc}</p>` : ''}
+                        </div>
+                    </div>
+                `;
+                listItem.addEventListener('click', () => {
+                    mymap.setView([sucursal.lat, sucursal.lng], 14);
+                    marker.openPopup();
+                });
+                sucursalesList.appendChild(listItem);
+            });
+            mapInitialized = true;
+        }
+    </script>
+</body>
+</html>

@@ -27,3 +27,13 @@ def login(request):
 def create_invoice(request):
     """Renderiza la página para crear una factura."""
     return render(request, 'core/create_invoice.html')
+
+# Renderiza la página del panel de usuario
+def panel_usuario(request):
+    """Renderiza el panel de usuario."""
+    return render(request, 'core/panel_usuario.html')
+
+# Renderiza la página de registro
+def registro(request):
+    """Renderiza la página de 'Regístrate aquí'."""
+    return render(request, 'core/Regístrate aquí.html')
